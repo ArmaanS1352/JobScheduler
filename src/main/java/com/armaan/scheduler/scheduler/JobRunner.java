@@ -17,7 +17,7 @@ public class JobRunner {
     }
 
     //every 5s for now
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 1000)
     public void processJobs() {
         List<Job> jobs = jobService.getDueJobs();
 

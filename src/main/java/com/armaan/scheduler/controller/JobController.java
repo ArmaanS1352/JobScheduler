@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.armaan.scheduler.model.Job;
+import com.armaan.scheduler.model.JobStatus;
 import com.armaan.scheduler.service.JobService;
 
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("jobs")
 public class JobController {
@@ -48,4 +51,10 @@ public class JobController {
     public Job cancelJob (@PathVariable UUID id) {
         return jobService.cancelJob(id);
     }
+
+    @GetMapping("/status/{status}")
+    public List<Job> getJobsByStatus (@PathVariable JobStatus status) {
+        return jobService.getJobsByStatus(status);
+    }
+    
 }

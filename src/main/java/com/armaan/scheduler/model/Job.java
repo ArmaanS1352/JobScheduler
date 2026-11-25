@@ -22,6 +22,7 @@ public class Job {
 
     @Column(columnDefinition="TEXT")
     private String payload;
+    @Column(columnDefinition="TEXT")
     private String errorMessage;
 
     private Instant scheduledTime;

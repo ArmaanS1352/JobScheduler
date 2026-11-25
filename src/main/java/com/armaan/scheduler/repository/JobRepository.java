@@ -10,5 +10,6 @@ import com.armaan.scheduler.model.Job;
 import com.armaan.scheduler.model.JobStatus;
 
 public interface JobRepository extends JpaRepository<Job, UUID>{
-    public List<Job> findByScheduledTimeBeforeAndStatus(Instant time, JobStatus status);
+    public List<Job> findByScheduledTimeBeforeAndStatusIn(Instant time, List<JobStatus> statuses);
+    public List<Job> findByStatus (JobStatus status);
 }
